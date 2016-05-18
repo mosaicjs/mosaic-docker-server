@@ -1,0 +1,37 @@
+{
+  "name": "mosaic-docker-server",
+  "version": "0.0.1",
+  "main": "index.js",
+  "description": "OSM GeoJson service",
+  "url": "",
+  "keywords": [
+    "map",
+    "osm",
+    "geojson"
+  ],
+  "licenses": [
+    {
+      "type": "BSD"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "contributors": [
+    {
+      "name": "Mikhail Kotelnikov",
+      "email": "mikhail.kotelnikov@ubimix.com"
+    }
+  ],
+  "dependencies": {
+    "ecstatic": "^1.4.0",
+    "express": "^4.13.4",
+    "lodash": "^4.11.2",
+    "pg.js": "^4.1.1"
+  },
+  "scripts": {
+    "start": "node ./index.js -port 9876 -path ''"
+  },
+  "devDependencies": {}
+}
