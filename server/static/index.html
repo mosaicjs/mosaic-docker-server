@@ -55,7 +55,8 @@ p,h3 {
 
 	<div id="map" data-center="[35.460669951495305, -29.8828125]"
 		data-zoom="2" data-min-zoom="1" data-max-zoom="18"
-		data-tiles-url="/service/world/{z}/{x}/{y}/tile.png"
+        data-tiles-url="/service/world/{z}/{x}/{y}/tile.png"
+        data-utfgrid-url="/service/world/{z}/{x}/{y}/tile.utf.json?cb={cb}"
         >
 		<div class="attribution">
 			Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>
@@ -65,14 +66,11 @@ p,h3 {
 
 	<div id="info" style="display: none;">
 		<h3>
-			<span class="name" data-placeholder="ADMIN"></span> (<span
-				class="abbrev" data-placeholder="ABBREV"></span>)
+			<span class="name" data-placeholder="NAME"></span> (<span
+				class="abbrev" data-placeholder="ISO2"></span>)
 		</h3>
 		<p>
-			Type: <span class="type" data-placeholder="TYPE"></span>
-		</p>
-		<p>
-			Post Code: <span class="postcode" data-placeholder="POSTAL"></span>
+			Area: <span class="postcode" data-placeholder="AREA"></span> km<sup>2</sup>
 		</p>
 	</div>
 </body>

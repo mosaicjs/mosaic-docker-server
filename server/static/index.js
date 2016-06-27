@@ -42,11 +42,11 @@
     });
     function showInfo(data) {
         var panel = $('#info');
-        console.log(panel[0])
+        console.log(data);
         panel.find('[data-placeholder]').each(function() {
             var elm = $(this);
             var field = elm.data('placeholder');
-            console.log(field, data[field]);
+            console.log(' * field:', field, data[field]);
             elm.text(data[field]);
         })
         panel.show();
