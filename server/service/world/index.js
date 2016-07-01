@@ -15,7 +15,7 @@ module.exports = require('../../libs/serviceExport')({
             params.format = params.format || params.type || 'png';
             return tilesGenerator.loadTile(options);
         }).then(function(results) {
-            results.data = results.data || results.tile;
+            results.data = results.tile || results.data;
             delete results.tile;
             return results;
         });
