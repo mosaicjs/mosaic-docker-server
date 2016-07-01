@@ -58,7 +58,7 @@ PgConnector.prototype._connect = function(action) {
     var that = this;
       return new Promise(function(resolve, reject){
         PG.connect(that.options.url, function(err, client, done) {
-            return Promise().resolve().then(function() {
+            return Promise.resolve().then(function() {
                 if (err) { return reject(err); }
                 return action(client);
             }).then(function(result) {

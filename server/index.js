@@ -8,7 +8,9 @@ var upload = multer(); // for parsing multipart/form-data
 
 var app = express();
 
-app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.json({
+    limit : '20mb'
+})); // for parsing application/json
 app.use(bodyParser.urlencoded({
     extended : true
 })); // for parsing application/x-www-form-urlencoded

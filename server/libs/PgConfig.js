@@ -17,7 +17,6 @@ module.exports = {
             password : password,
             dbname : dbname
         };
-        console.log('>>', result);
         return result;
     }
 };

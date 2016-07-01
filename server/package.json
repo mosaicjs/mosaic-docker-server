@@ -30,7 +30,7 @@
     "ecstatic": "^1.4.0",
     "express": "^4.13.4",
     "lodash": "^4.11.2",
-    "mosaic-mapnik": "^0.3.11",
+    "mosaic-mapnik": "^0.3.19",
     "mosaic-pathmapper": "^0.1.2",
     "mosaic-teleport": "^1.0.0",
     "mosaic-transform": "^0.1.4",
