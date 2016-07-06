@@ -30,15 +30,18 @@
     "ecstatic": "^1.4.0",
     "express": "^4.13.4",
     "lodash": "^4.11.2",
-    "mosaic-mapnik": "^0.3.20",
+    "mosaic-api-service": "^0.1.0",
     "mosaic-pathmapper": "^0.1.2",
     "mosaic-teleport": "^1.0.1",
     "mosaic-transform": "^0.1.4",
     "multer": "^1.1.0",
-    "pg.js": "^4.1.1"
+    "pg": "^6.0.1"
   },
   "scripts": {
+    "postinstall": "node node_modules/bower/bin/bower install",
     "start": "node ./index.js -port 9876 -path ''"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "bower": "^1.7.9"
+  }
 }

@@ -6,13 +6,13 @@
 <meta charset="utf-8"></meta>
 
 <!-- External CSS styles -->
-<link rel="stylesheet" href="./libs/leaflet/leaflet.css" />
-<!--[if lte IE 8]><link rel="stylesheet" href="./libs/leaflet/leaflet.ie.css" /><![endif]-->
+<link rel="stylesheet" href="./libs/leaflet/dist/leaflet.css" />
+<!--[if lte IE 8]><link rel="stylesheet" href="./libs/leaflet/dist/leaflet.ie.css" /><![endif]-->
 <!-- JavaScript libraries -->
-<script type="text/javascript" src="./libs/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="./libs/leaflet/leaflet.js"></script>
+<script type="text/javascript" src="./libs/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="./libs/leaflet/dist/leaflet.js"></script>
 <script type="text/javascript"
-	src="./libs/leaflet.utfgrid/leaflet.utfgrid.js"></script>
+	src="./libs/Leaflet.utfgrid/dist/leaflet.utfgrid.js"></script>
 
 <!-- Specific CSS styles -->
 <style type="text/css">
@@ -30,6 +30,11 @@ html,body {
 	left: 0px;
 	bottom: 0px;
 	right: 0px;
+}
+
+#map .map-layer,
+#map .template {
+    display : none;
 }
 
 #info {
@@ -53,28 +58,30 @@ p,h3 {
 </head>
 <body>
 
-	<div id="map" data-center="[35.460669951495305, -29.8828125]"
-		data-zoom="2" data-min-zoom="1" data-max-zoom="18"
-        data-tiles-url="/service/world/{z}/{x}/{y}/tile.png"
-        data-utfgrid-url="/service/world/{z}/{x}/{y}/tile.utf.json?cb={cb}"
-        >
-		<div class="attribution">
-			Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>
-			contributors
-		</div>
+	<div id="map" data-center="[48.88390842884749,2.30987548828125]"
+		data-zoom="5" data-min-zoom="1" data-max-zoom="18">
+ <!-- 
+ -->
+        <div class="map-layer"
+            data-tiles-url="service/world/{z}/{x}/{y}/tile.png"
+            data-utfgrid-url="service/world/{z}/{x}/{y}/tile.utf.json?cb={cb}"
+            >
+            <div class="template">
+                <h3>
+                    <span class="name" data-placeholder="NAME"></span> (<span
+                        class="abbrev" data-placeholder="ISO2"></span>)
+                </h3>
+                <p>
+                    Area: <span class="postcode" data-placeholder="AREA"></span> km<sup>2</sup>
+                </p>
+                <p>
+                    Population: <span class="population" data-placeholder="POP2005"></span>
+                </p>
+            </div>
+        </div>
 	</div>
 
 	<div id="info" style="display: none;">
-		<h3>
-			<span class="name" data-placeholder="NAME"></span> (<span
-				class="abbrev" data-placeholder="ISO2"></span>)
-		</h3>
-		<p>
-			Area: <span class="postcode" data-placeholder="AREA"></span> km<sup>2</sup>
-		</p>
-        <p>
-            Population: <span class="population" data-placeholder="POP2005"></span>
-        </p>
 	</div>
 </body>
 </html>

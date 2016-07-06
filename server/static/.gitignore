@@ -5,3 +5,4 @@ node_modules
 *.zip
 project.tilepin.*.xml
 /sandbox
+/libs/
