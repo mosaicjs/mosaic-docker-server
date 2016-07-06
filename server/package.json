@@ -38,10 +38,13 @@
     "pg": "^6.0.1"
   },
   "scripts": {
-    "postinstall": "node node_modules/bower/bin/bower install",
+    "postinstall": "node_modules/bower/bin/bower --allow-root install",
     "start": "node ./index.js -port 9876 -path ''"
   },
   "devDependencies": {
     "bower": "^1.7.9"
+  },
+  "config": {
+    "unsafe-perm":true
   }
 }
