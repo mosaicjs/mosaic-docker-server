@@ -15,6 +15,7 @@ module.exports = {
             port : port,
             user : user,
             password : password,
+            database : dbname,
             dbname : dbname
         };
         return result;
