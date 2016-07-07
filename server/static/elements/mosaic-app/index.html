@@ -24,24 +24,34 @@
                 on-click="_handleClick" on-mouseover="_handleMouseOver">
             </mosaic-map-tiles>
     
-            <mosaic-map-marker lat="{{lat}}" lng="{{lng}}" />
-            
-            <mosaic-map-popup>
-                <div class="template">
+            <mosaic-map-marker lat="{{lat}}" lng="{{lng}}"
+                icon-url="../../libs/leaflet/dist/images/marker-icon.png"
+                icon-size="[ 32, 48 ]"
+                icon-anchor="[ 16, 48 ]"
+                popup-anchor="[ 0, -50 ]"
+                show-popup
+                data="{{data}}"
+                >
+                <template is="dom-if" if="{{data}}">
+                <div  style="min-width: 150px">
                     <h3>
-                        <span class="name" data-placeholder="NAME"></span> (<span
-                            class="abbrev" data-placeholder="ISO2"></span>)
+                        <span class="name">{{data.NAME}}</span>
+                        (<span class="abbrev">{{data.ISO2}}</span>)
                     </h3>
                     <p>
-                        Area: <span class="postcode" data-placeholder="AREA"></span>
-                        km<sup>2</sup>
+                        Area: <span class="postcode">{{data.AREA}}</span> km<sup>2</sup>
                     </p>
                     <p>
-                        Population: <span class="population"
-                            data-placeholder="POP2005"></span>
+                        Population: <span class="population">{{data.POP2005}}</span>
                     </p>
+                    <div style="background-color:#eee; border-top: 1px solid silver; padding: 0.5em">
+                        Mouse:
+                        <div>Latitude: {{mousePosition.lat}}</div>
+                        <div>Longitude: {{mousePosition.lng}}</div>
+                    </div>
                 </div>
-            </mosaic-map-popup>
+                </template>
+            </mosaic-map-marker>
             
         </mosaic-map>
         
@@ -55,15 +65,23 @@
                 type : Array,
                 computed : '_getCenter(lat,lng)'
             },
+            data : {
+                type : Object,
+                observable : true,
+            },
+            mousePosition : {
+                type : Object,
+                observable : true,
+            },
             lat : {
                 type : Number,
                 observable : true,
-                value : 48.88390842884749
+                value : 48.883908
             },
             lng : {
                 type : Number,
                 observable : true,
-                value : 2.30987548828125
+                value : 2.309875
             },
             zoom : {
                 type : Number,
@@ -77,13 +95,16 @@
             return [lng,lat];
         },
         _handleClick : function(ev) {
-            console.log('CLICK:', ev);
+            var latlng = ev.detail.latlng;
+            this.lat = latlng.lat;
+            this.lng = latlng.lng;
+            this.data = ev.detail.data;
         },
         _handleMouseOver : function(ev) {
-            console.log('MOUSE OVER:', ev);
+            this.mousePosition = ev.detail.latlng;
         },
         _endMapMove : function(ev) {
-            console.log('END MAP MOVE', ev);
+            // console.log('END MAP MOVE', ev);
         }
     });
     </script>

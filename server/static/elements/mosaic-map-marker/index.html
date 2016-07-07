@@ -1,38 +1,83 @@
 <link rel="import" href="../polymer.html">
 <link rel="import" href="../leaflet.html">
 
-<dom-module id="mosaic-map-marker">
-    <template>
-        <div id="icon">
-            <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-                <g>
-                   <path stroke="gray" fill="cyan" stroke-width="1" d="m16.2249,0c-6.54812,0 -11.82671,5.21177 -11.82671,11.62626c0,10.35672 11.82671,20.44618 11.82671,20.44618s11.82671,-10.2899 11.82671,-20.44618c0,-6.41449 -5.27858,-11.62626 -11.82671,-11.62626z"/>
-                </g>
-            </svg>
-        </div>
-    </template>
-    
-    <script>
+<dom-module id="mosaic-map-marker"> <script>
     (function() {
-        
+
         Polymer({
             is : 'mosaic-map-marker',
             properties : {
-                lat : Number,
-                lng : Number
+                lat : {
+                    type : Number,
+                    value : null,
+                    reflectToAttribute : true,
+                    notify : true,
+                    observer : '_positionChanged'
+                },
+                lng : {
+                    type : Number,
+                    value : null,
+                    reflectToAttribute : true,
+                    notify : true,
+                    observer : '_positionChanged'
+                },
+                iconUrl : String,
+                iconSize : Array,
+                iconAnchor : Array,
+                popupAnchor : Array,
+                showPopup : {
+                    type : Boolean,
+                    observer : '_onPopupChange'
+                }
             },
             ready : function() {
-                var html = this.$.icon.innerHTML;
-                this.leafletElement = new L.marker([ this.lat, this.lng ], {
-                    icon : L.divIcon({
-                        className : '',
-                        iconSize : [ 32, 32 ],
-                        iconAnchor : [ 16, 0 ],
-                        popupAnchor : [ -16, -36 ],
-                        html: html
-                    })
+                var latlng = L.latLng(this.lat, this.lng);
+                var icon = L.icon({
+                    iconUrl : this.iconUrl,
+                    iconSize : this.iconSize,
+                    iconAnchor : this.iconAnchor,
+                    popupAnchor : this.popupAnchor
                 });
+                this.leafletElement = new L.marker(latlng, {
+                    icon : icon
+                });
+                this._updatePopup = this._updatePopup.bind(this);
+                this._observer = Polymer.dom(this).observeNodes(this._updatePopup);
+                setTimeout(this._updatePopup);
+            },
+            _positionChanged : function(ev) {
+                if (this.leafletElement) {
+                    this.leafletElement.setLatLng(L.latLng(this.lat, this.lng));
+                }
+                this._updatePopup();
+            },
+            _onPopupChange : function(val){
+                this._updatePopup();
+            },
+            _getPopupContent : function(){
+                var content = this.$$('div');
+                return content;
+            },
+            _updatePopup : function(){
+                if (!this.leafletElement)
+                    return ;
+                if (this.showPopup){
+                    var content = this._getPopupContent();
+                    if (!content)
+                        return ;
+                    if (!this._popup) {
+                        this._popup = L.popup({
+                            closeOnClick : false
+                        });
+                    }
+                    this._popup.setContent(content);
+                    this.leafletElement.bindPopup(this._popup).openPopup();
+                } else if (this._popup){
+                    this.leafletElement.closePopup();
+                    delete this._popup;
+                }
             }
+
         });
     })();
 </script> </dom-module>

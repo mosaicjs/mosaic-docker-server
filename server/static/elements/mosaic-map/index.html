@@ -29,8 +29,6 @@
                 setTimeout(this._onDomReady.bind(this));
             },
             _onDomReady : function(){
-                this._guessLeafletImagePath();
-
                 var center = this.center || [ 0, 0 ];
                 var zoom = this.zoom || 0;
                 this.map = L.map(this, {
@@ -46,26 +44,6 @@
                     this._processNewNodes(info.addedNodes);
                     this._processRemovedNodes(info.removedNodes);
                 }.bind(this));
-            },
-            
-            _guessLeafletImagePath: function() {
-/*                 if (L.Icon.Default.imagePath) {
-                    return;
-                }
-                
- */             var scripts = document.getElementsByTagName('link'),
-                    leafletRe = /[\/^]mosaic-map\/$/;
- 
-                var i, len, src, matches, path;
-                for (i = 0, len = scripts.length; i < len; i++) {
-                    src = scripts[i].href;
-                    matches = src.match(leafletRe);
-                    console.log('* I AM HERE!', src, matches);
-                    if (matches) {
-                        path = src.split(leafletRe)[0];
-                        L.Icon.Default.imagePath = (path ? path + '/' : '') + '../leaflet/dist/images';
-                    }
-                }
             },
             _processNewNodes : function(list) {
                 list.forEach(function(child) {
