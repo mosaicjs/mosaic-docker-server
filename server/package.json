@@ -26,6 +26,7 @@
   ],
   "dependencies": {
     "body-parser": "^1.15.2",
+    "d3-ease": "^1.0.0",
     "ecstatic": "^1.4.0",
     "express": "^4.13.4",
     "lodash": "^4.11.2",
@@ -43,6 +44,6 @@
     "bower": "^1.7.9"
   },
   "config": {
-    "unsafe-perm":true
+    "unsafe-perm": true
   }
 }
