@@ -1,0 +1,90 @@
+<link rel="import" href="../polymer.html">
+<link rel="import" href="../mosaic-map/index.html">
+<link rel="import" href="../mosaic-map-marker/index.html">
+<link rel="import" href="../mosaic-map-tiles/index.html">
+
+<dom-module id="mosaic-app">
+    <style>
+        :host {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+    <template>
+    
+        <mosaic-map center="{{center}}"
+            zoom="{{zoom}}" min-zoom="1" max-zoom="18"
+            on-moveend="_endMapMove">
+
+            <mosaic-map-tiles
+                tiles-url="service/api/tiles/world/{z}/{x}/{y}/tile.png"
+                utfgrid-url="service/api/tiles/world/{z}/{x}/{y}/tile.utf.json?cb={cb}"
+                on-click="_handleClick" on-mouseover="_handleMouseOver">
+            </mosaic-map-tiles>
+    
+            <mosaic-map-marker lat="{{lat}}" lng="{{lng}}" />
+            
+            <mosaic-map-popup>
+                <div class="template">
+                    <h3>
+                        <span class="name" data-placeholder="NAME"></span> (<span
+                            class="abbrev" data-placeholder="ISO2"></span>)
+                    </h3>
+                    <p>
+                        Area: <span class="postcode" data-placeholder="AREA"></span>
+                        km<sup>2</sup>
+                    </p>
+                    <p>
+                        Population: <span class="population"
+                            data-placeholder="POP2005"></span>
+                    </p>
+                </div>
+            </mosaic-map-popup>
+            
+        </mosaic-map>
+        
+    </template>
+    
+    <script>
+    Polymer({
+        is : 'mosaic-app',
+        properties : {
+            center : {
+                type : Array,
+                computed : '_getCenter(lat,lng)'
+            },
+            lat : {
+                type : Number,
+                observable : true,
+                value : 48.88390842884749
+            },
+            lng : {
+                type : Number,
+                observable : true,
+                value : 2.30987548828125
+            },
+            zoom : {
+                type : Number,
+                observable : true,
+                value : 5
+            }
+        },
+        ready : function() {
+        },
+        _getCenter : function(lat, lng){
+            return [lng,lat];
+        },
+        _handleClick : function(ev) {
+            console.log('CLICK:', ev);
+        },
+        _handleMouseOver : function(ev) {
+            console.log('MOUSE OVER:', ev);
+        },
+        _endMapMove : function(ev) {
+            console.log('END MAP MOVE', ev);
+        }
+    });
+    </script>
+</dom-module>

@@ -6,17 +6,17 @@
         var minZoom = mapElement.data('min-zoom') || 2;
         var maxZoom = mapElement.data('max-zoom') || 18;
 
-        console.log('center:', center);
-        console.log('minZoom:', minZoom);
-        console.log('maxZoom:', maxZoom);
-        console.log('zoom:', zoom);
+//        console.log('center:', center);
+//        console.log('minZoom:', minZoom);
+//        console.log('maxZoom:', maxZoom);
+//        console.log('zoom:', zoom);
         
         var layerElements = $('.map-layer');
         var layers = [];
         layerElements.each(function(){
             var layerElement = $(this);
             var tilesUrl = layerElement.data('tiles-url');
-            console.log('>>', tilesUrl);
+//            console.log('>>', tilesUrl);
             if (!tilesUrl)
                 return ;
             var utfgridUrl = layerElement.data('utfgrid-url');
@@ -24,9 +24,9 @@
             var template = layerElement.find('.template');
             var attribution = attributionElm.html();
 
-            console.log('* Layer: ');
-            console.log('     tilesUrl:', tilesUrl);
-            console.log('   utfgridUrl:', utfgridUrl);
+//            console.log('* Layer: ');
+//            console.log('     tilesUrl:', tilesUrl);
+//            console.log('   utfgridUrl:', utfgridUrl);
 
             var tiles = L.tileLayer(tilesUrl, {
                 attribution : attribution,
@@ -63,7 +63,7 @@
         panel.find('[data-placeholder]').each(function() {
             var elm = $(this);
             var field = elm.data('placeholder');
-            console.log(' * field:', field, data[field]);
+//            console.log(' * field:', field, data[field]);
             elm.text(data[field]);
         })
         panel.show();

@@ -1,0 +1,38 @@
+<link rel="import" href="../polymer.html">
+<link rel="import" href="../leaflet.html">
+
+<dom-module id="mosaic-map-marker">
+    <template>
+        <div id="icon">
+            <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+                <g>
+                   <path stroke="gray" fill="cyan" stroke-width="1" d="m16.2249,0c-6.54812,0 -11.82671,5.21177 -11.82671,11.62626c0,10.35672 11.82671,20.44618 11.82671,20.44618s11.82671,-10.2899 11.82671,-20.44618c0,-6.41449 -5.27858,-11.62626 -11.82671,-11.62626z"/>
+                </g>
+            </svg>
+        </div>
+    </template>
+    
+    <script>
+    (function() {
+        
+        Polymer({
+            is : 'mosaic-map-marker',
+            properties : {
+                lat : Number,
+                lng : Number
+            },
+            ready : function() {
+                var html = this.$.icon.innerHTML;
+                this.leafletElement = new L.marker([ this.lat, this.lng ], {
+                    icon : L.divIcon({
+                        className : '',
+                        iconSize : [ 32, 32 ],
+                        iconAnchor : [ 16, 0 ],
+                        popupAnchor : [ -16, -36 ],
+                        html: html
+                    })
+                });
+            }
+        });
+    })();
+</script> </dom-module>

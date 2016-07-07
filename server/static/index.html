@@ -5,83 +5,65 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"></meta>
 <meta charset="utf-8"></meta>
 
-<!-- External CSS styles -->
-<link rel="stylesheet" href="./libs/leaflet/dist/leaflet.css" />
-<!--[if lte IE 8]><link rel="stylesheet" href="./libs/leaflet/dist/leaflet.ie.css" /><![endif]-->
-<!-- JavaScript libraries -->
-<script type="text/javascript" src="./libs/jquery/dist/jquery.js"></script>
-<script type="text/javascript" src="./libs/leaflet/dist/leaflet.js"></script>
-<script type="text/javascript"
-	src="./libs/Leaflet.utfgrid/dist/leaflet.utfgrid.js"></script>
+<script src="libs/webcomponentsjs/webcomponents-lite.js"></script>
+<link rel="import" href="styles/app-theme.html">
+<link rel="import" href="elements/mosaic-app/index.html">
 
 <!-- Specific CSS styles -->
 <style type="text/css">
-html,body {
-	height: 100%;
-	width: 100%;
-	margin: 0;
-	padding: 0;
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 #map {
-	background-color: white;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	bottom: 0px;
-	right: 0px;
+    background-color: white;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 25%;
 }
 
-#map .map-layer,
-#map .template {
-    display : none;
+#right-panel {
+    border-left: 1px solid #eee;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 25%;
+}
+
+#map .map-layer, #map .template {
+    display: none;
 }
 
 #info {
-	background-color: white;
-	border: 1px solid silver;
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	width: 200px;
-	padding: 1em;
-	position: absolute;
+    background-color: white;
+    border: 1px solid silver;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 200px;
+    padding: 1em;
+    position: absolute;
 }
 
-p,h3 {
-	margin: 0.5em 0;
+p, h3 {
+    margin: 0.5em 0;
 }
 </style>
-
-<script type="text/javascript" src="./index.js"></script>
 
 </head>
 <body>
 
-	<div id="map" data-center="[48.88390842884749,2.30987548828125]"
-		data-zoom="5" data-min-zoom="1" data-max-zoom="18">
- <!-- 
- -->
-        <div class="map-layer"
-            data-tiles-url="service/api/tiles/world/{z}/{x}/{y}/tile.png"
-            data-utfgrid-url="service/api/tiles/world/{z}/{x}/{y}/tile.utf.json?cb={cb}"
-            >
-            <div class="template">
-                <h3>
-                    <span class="name" data-placeholder="NAME"></span> (<span
-                        class="abbrev" data-placeholder="ISO2"></span>)
-                </h3>
-                <p>
-                    Area: <span class="postcode" data-placeholder="AREA"></span> km<sup>2</sup>
-                </p>
-                <p>
-                    Population: <span class="population" data-placeholder="POP2005"></span>
-                </p>
-            </div>
-        </div>
-	</div>
+    <div id="info" style="display: none;"></div>
+    <div id="map">
+        <mosaic-app />
+    </div>
 
-	<div id="info" style="display: none;">
-	</div>
+    <div id="right-panel"></div>
 </body>
 </html>
