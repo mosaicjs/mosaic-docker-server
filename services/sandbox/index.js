@@ -1,24 +1,24 @@
 var teleport = require('mosaic-teleport')(Promise);
 
-function Test(name) {
-    this.name = name;
+function Test() {
 }
 Test.prototype.sayHello = rest('/*name', 'get', function(options) {
     var that = this;
     return Promise.resolve().then(function() {
+        var name = options.params.name;
         return {
             headers : {
                 'Content-Type' : 'application/json'
             },
             data : {
-                name : that.name,
-                msg : 'Hello, ' + options.params.name + ' (' + that.name + ')!'
+                name : name,
+                msg : 'Hello, ' + name + '!'
             },
         }
     });
 });
 
-var serviceAdapter = new teleport.ServiceAdapter(new Test('Blah-Blah'));
+var serviceAdapter = new teleport.ServiceAdapter(new Test());
 module.exports = teleport.remote.getServerHandler('/', serviceAdapter);
 
 function rest(path, method, f) {

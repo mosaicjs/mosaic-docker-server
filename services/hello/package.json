@@ -1,0 +1,25 @@
+{
+  "name": "hello-service",
+  "version": "0.0.1",
+  "main": "index.js",
+  "url": "",
+  "keywords": [
+  ],
+  "license": "BSD",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "contributors": [
+    {
+      "name": "Mikhail Kotelnikov",
+      "email": "mikhail.kotelnikov@ubimix.com"
+    }
+  ],
+  "dependencies": {
+  },
+  "scripts": {
+  },
+  "devDependencies": {
+  }
+}
