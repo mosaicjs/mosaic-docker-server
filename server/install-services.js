@@ -25,6 +25,7 @@ function runNpmInstall(dir) {
     return new Promise(function(resolve, reject) {
         exec('npm install', {
             cwd : dir,
+            maxBuffer : 50 * 1024 * 1024
         }, function(err, stdout, stderr) {
             if (err)
                 return reject(err);
