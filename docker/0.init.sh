@@ -15,6 +15,7 @@ sudo docker run -t \
     --net="host" \
     --name $serverdock \
     -v "$dir/server:/app/server:rw"\
+    -v "$dir/services:/app/services:rw"\
     -d $serverdock
 
 sudo docker exec $serverdock npm install

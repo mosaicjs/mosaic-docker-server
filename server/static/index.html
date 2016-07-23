@@ -5,11 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"></meta>
 <meta charset="utf-8"></meta>
 
-<script src="libs/webcomponentsjs/webcomponents-lite.js"></script>
-<link rel="import" href="styles/app-theme.html">
-<link rel="import" href="elements/mosaic-app/index.html">
-
-<!-- Specific CSS styles -->
 <style type="text/css">
 html, body {
     height: 100%;
@@ -17,53 +12,10 @@ html, body {
     margin: 0;
     padding: 0;
 }
-
-#map {
-    background-color: white;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    bottom: 0px;
-    right: 25%;
-}
-
-#right-panel {
-    border-left: 1px solid #eee;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    width: 25%;
-}
-
-#map .map-layer, #map .template {
-    display: none;
-}
-
-#info {
-    background-color: white;
-    border: 1px solid silver;
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    width: 200px;
-    padding: 1em;
-    position: absolute;
-}
-
-p, h3 {
-    margin: 0.5em 0;
-}
 </style>
 
 </head>
 <body>
-
-    <div id="info" style="display: none;"></div>
-    <div id="map">
-        <mosaic-app />
-    </div>
-
-    <div id="right-panel"></div>
+    <h1>It works!</h1>
 </body>
 </html>

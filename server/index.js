@@ -27,7 +27,7 @@ function serviceHandler(req, res, next) {
         params.path = '/' + (params['0'] || '');
         delete params['0'];
         var service = params.service;
-        var modulePath = './service/' + service;
+        var modulePath = '../services/' + service;
         return Promise.resolve().then(function() {
             return require(modulePath);
         }).then(function(module) {
@@ -44,7 +44,7 @@ function serviceHandler(req, res, next) {
     });
 };
 
-app.use(basePath + 'service/:service/*', upload.array(), serviceHandler);
+app.use(basePath + ':service/*', upload.array(), serviceHandler);
 // app.get(basePath + 'service/:service/*', serviceHandler);
 
 app.use(basePath, ecstatic({
