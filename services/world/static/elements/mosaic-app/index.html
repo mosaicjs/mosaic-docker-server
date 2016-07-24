@@ -99,6 +99,7 @@
             this.lat = latlng.lat;
             this.lng = latlng.lng;
             this.data = ev.detail.data;
+            this.mousePosition = latlng;
         },
         _handleMouseOver : function(ev) {
             this.mousePosition = ev.detail.latlng;
