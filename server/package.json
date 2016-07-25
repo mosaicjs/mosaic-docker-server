@@ -30,7 +30,7 @@
   },
   "scripts": {
     "postinstall": "node ./install-applications.js",
-    "start": "node ./index.js -port 9876 -path ''"
+    "start": "node ./index.js"
   },
   "devDependencies": {
     "bower": "^1.7.9"

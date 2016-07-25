@@ -14,6 +14,7 @@ sudo docker build -t $serverdock "$dir/docker"
 sudo docker run -t \
     --net="host" \
     --name $serverdock \
+    -v "$dir/.config:/app/.config:rw"\
     -v "$dir/server:/app/server:rw"\
     -v "$dir/applications:/app/applications:rw"\
     -d $serverdock

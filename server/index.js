@@ -1,6 +1,7 @@
 var http = require('http');
 var express = require('express');
 var ecstatic = require('ecstatic');
+var fs = require('fs');
 var path = require('path');
 var bodyParser = require('body-parser');
 var multer = require('multer'); // v1.0.5
@@ -17,7 +18,8 @@ app.use(bodyParser.urlencoded({
 
 // require('./babel');
 
-var port = 9876;
+var configPath = path.resolve(__dirname, '../.config/server.port');
+var port = fs.readFileSync(configPath, 'utf8') || 9876;
 var basePath = '/';
 var baseDir = __dirname;
 
