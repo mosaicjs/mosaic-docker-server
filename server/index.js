@@ -27,7 +27,7 @@ function serviceHandler(req, res, next) {
         params.path = '/' + (params['0'] || '');
         delete params['0'];
         var service = params.service;
-        var modulePath = '../services/' + service;
+        var modulePath = '../applications/' + service;
         return Promise.resolve().then(function() {
             return require(modulePath);
         }).then(function(module) {
